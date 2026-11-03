@@ -158,6 +158,17 @@ Download from the [latest release](https://github.com/lazyalex616/ExplorerTabPlu
 | `x86` | 32-bit Windows only |
 
 Unzip anywhere and run `ExplorerTabUtility.exe`. Look for the tray icon.
+### Command-line opening
+
+Pass one or more locations to the executable to open them through the running tray instance:
+
+```powershell
+ExplorerTabUtility.exe "C:\Users\Documents"
+ExplorerTabUtility.exe "C:\Users\Documents" "D:\Projects"
+```
+
+If Explorer Tab Utility is already running, the new process forwards the locations to the existing instance and exits. Each location is opened as a tab, and an already-open matching location is activated instead of duplicated.
+
 
 > [!NOTE]
 > **Upgrading from the original Explorer Tab Utility:** just run the installer (or replace the files). The app keeps the same executable name, the same settings at `%APPDATA%\ExplorerTabUtility\`, and the same installer ID, so it upgrades in place and keeps your settings. Future updates are offered from this repository.
