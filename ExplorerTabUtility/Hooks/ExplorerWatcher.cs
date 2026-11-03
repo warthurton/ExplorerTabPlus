@@ -24,6 +24,7 @@ using WindowEntry = DualKeyEntry<InternetExplorer, nint?, WindowInfo>;
 
 public class ExplorerWatcher : IHook
 {
+    private const int RecentlyCreatedWindowGracePeriodMs = 2_000;
     private static bool _instanceRunning;
     private static Guid _shellBrowserGuid = typeof(IShellBrowser).GUID;
     private int _disposed;
@@ -120,8 +121,16 @@ public class ExplorerWatcher : IHook
 
             foreach (var (window, windowInfo, tabHandle) in _windowEntryDict)
             {
-                // Make sure it is not the newly created window
-                if (!Helper.IsTimeUp(windowInfo.CreatedAt, 2_000) || !tabHandle.HasValue || tabHandle.Value == 0)
+                if (!tabHandle.HasValue || tabHandle.Value == 0)
+                    continue;
+
+                // A new standalone window is the request currently being
+                // redirected, so do not select it as the existing match.
+                // A tab created inside an existing multi-tab host is already
+                // a valid reuse candidate and must remain visible to avoid
+                // duplicate tabs during rapid consecutive opens.
+                if (!Helper.IsTimeUp(windowInfo.CreatedAt, RecentlyCreatedWindowGracePeriodMs) &&
+                    IsRecentlyCreatedStandaloneWindow(tabHandle.Value))
                     continue;
 
                 var comparePath = windowInfo.Location ?? GetLocation(window);
@@ -141,6 +150,12 @@ public class ExplorerWatcher : IHook
             if (targetPidl != 0)
                 Marshal.FreeCoTaskMem(targetPidl);
         }
+    }
+
+    private static bool IsRecentlyCreatedStandaloneWindow(nint tabHandle)
+    {
+        var parentWindow = WinApi.GetParent(tabHandle);
+        return parentWindow == 0 || Helper.GetAllExplorerTabs(parentWindow).Take(2).Count() <= 1;
     }
     public async Task SelectTabByHandle(nint windowHandle, nint tabHandle)
     {

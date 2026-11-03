@@ -25,6 +25,10 @@ public enum SessionFilter
 /// </summary>
 public class ProcessWatcher : IDisposable
 {
+    // Process.Exited is the primary signal. The periodic scan only recovers
+    // from missed process events, so it does not need to run at sub-second
+    // frequency while the app is idle.
+    private const int DefaultScanIntervalMs = 2_000;
     private readonly string _processName;
     private readonly TimeSpan _scanInterval;
     private readonly SessionFilter _sessionFilter;
@@ -45,7 +49,7 @@ public class ProcessWatcher : IDisposable
     /// <param name="processName">Name of the process to monitor (without .exe extension)</param>
     /// <param name="scanIntervalMs">How often to scan for processes in milliseconds</param>
     /// <param name="sessionFilter">Whether to monitor all sessions or only the current session</param>
-    public ProcessWatcher(string processName, int scanIntervalMs = 500, SessionFilter sessionFilter = SessionFilter.Current)
+    public ProcessWatcher(string processName, int scanIntervalMs = DefaultScanIntervalMs, SessionFilter sessionFilter = SessionFilter.Current)
     {
         _processName = processName ?? throw new ArgumentNullException(nameof(processName));
         _scanInterval = TimeSpan.FromMilliseconds(Math.Max(100, scanIntervalMs)); // Minimum 100ms
