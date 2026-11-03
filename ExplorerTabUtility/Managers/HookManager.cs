@@ -46,6 +46,8 @@ public sealed class HookManager
     public void StopWindowHook() => ChangeHookStatus(_windowHook, false);
     public void SetReuseTabs(bool value) => _windowHook.SetReuseTabs(value);
 
+    public Task OpenLocation(string location) => _windowHook.Open(location, asTab: true, windowHandle: 0);
+
     private async void OnHotKeyProfileTriggered(HotKeyEventArgs e)
     {
         switch (e.Profile.Action)

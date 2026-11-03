@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Threading;
 using System.Windows.Controls;
+using System.Linq;
 using ExplorerTabUtility.UI.Views;
 using ExplorerTabUtility.Helpers;
 using ExplorerTabUtility.Languages.Manager;
@@ -21,11 +22,20 @@ public partial class App : Application
             base.OnStartup(e);
             SetupTooltipBehavior();
 
-            _ = new MainWindow();
+            var mainWindow = new MainWindow();
+            if (e.Args.Length > 0)
+            {
+                foreach (var location in e.Args.Where(arg => !string.IsNullOrWhiteSpace(arg)))
+                    _ = mainWindow.OpenLocation(location);
+            }
             return;
         }
 
-        CustomMessageBox.Show(LangeuageHelper.Instance.LanguageFields.AlreadyRunning, Constants.AppName, icon: MessageBoxImage.Information);
+        if (e.Args.Length == 0 || !CommandLineBroker.TrySend(e.Args))
+        {
+            CustomMessageBox.Show(LangeuageHelper.Instance.LanguageFields.AlreadyRunning, Constants.AppName, icon: MessageBoxImage.Information);
+        }
+
         Shutdown();
     }
 
