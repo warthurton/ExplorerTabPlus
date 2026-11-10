@@ -11,8 +11,6 @@ namespace ExplorerTabUtility.UI.Views;
 // ReSharper disable once RedundantExtendsListEntry
 public partial class AboutView : UserControl
 {
-    private bool _isSupportersLoaded;
-
     public string Version
     {
         get
@@ -22,32 +20,30 @@ public partial class AboutView : UserControl
         }
     }
 
+    private sealed class CreditInfo(string name, string description, string url)
+    {
+        public string Name { get; } = name;
+        public string Description { get; } = description;
+        public string Url { get; } = url;
+    }
+
+    private static readonly CreditInfo[] Credits =
+    [
+        new("w4po / ExplorerTabUtility", "Original project and author, Abd-Alrahman Ghanem.", "https://github.com/w4po/ExplorerTabUtility"),
+        new("lazyalex616 / ExplorerTabPlus", "The fork this one is based on: merged community fixes, bookmarks, multi-language UI, update source and release pipeline.", "https://github.com/lazyalex616/ExplorerTabPlus"),
+        new("MeverikC / ExplorerTabUtility", "Command-line path forwarding to the running instance, reduced idle process scanning, and exclusion of the redirected window during tab reuse.", "https://github.com/MeverikC/ExplorerTabUtility"),
+        new("NeedJustWord / ExplorerTabUtility", "Multi-language support and bookmark management (upstream PRs #131 and #140).", "https://github.com/NeedJustWord/ExplorerTabUtility"),
+        new("aiolosking / ExplorerTabUtility", "Preserve the requested file selection when converting or reusing tabs (upstream PR #144).", "https://github.com/aiolosking/ExplorerTabUtility"),
+        new("yueyangcode / ExplorerTabUtility", "Tab navigation event cleanup and no synchronous callback reentry (upstream PR #142).", "https://github.com/yueyangcode/ExplorerTabUtility"),
+        new("taroyamadax / ExplorerTabUtility", "Fix ObjectDisposedException on shutdown (upstream PR #139).", "https://github.com/taroyamadax/ExplorerTabUtility"),
+        new("youncyb / ExplorerTabUtility", "Prevent Explorer windows from becoming unopenable (upstream PR #137).", "https://github.com/youncyb/ExplorerTabUtility"),
+    ];
+
     public AboutView()
     {
         InitializeComponent();
+        CreditsItemsControl.ItemsSource = Credits;
     }
-
-    private void AboutView_Loaded(object sender, RoutedEventArgs e)
-    {
-        if (_isSupportersLoaded) return;
-        _ = LoadSupporters();
-    }
-
-    private async Task LoadSupporters()
-    {
-        try
-        {
-            var supporters = await Helpers.Helper.GetSupporters().ConfigureAwait(true);
-            if (supporters.Count > 0) _isSupportersLoaded = true;
-
-            SupportersItemsControl.ItemsSource = supporters;
-        }
-        catch
-        {
-            // Ignored
-        }
-    }
-
     private void StarClickAnimation_Completed(object _, EventArgs __)
     {
         // Restart the continuous animation after the click animation is done
@@ -55,14 +51,13 @@ public partial class AboutView : UserControl
         continuousStoryboard?.Storyboard?.Begin();
     }
 
-    private void BtnGitHubSponsors_Click(object _, RoutedEventArgs __) => OpenUrl("https://github.com/sponsors/w4po");
-    private void BtnPatreon_Click(object _, RoutedEventArgs __) => OpenUrl("https://www.patreon.com/w4po");
-    private void BtnBuyMeACoffee_Click(object _, RoutedEventArgs __) => OpenUrl("https://www.buymeacoffee.com/w4po");
-    private void BtnPayPal_Click(object _, RoutedEventArgs __) => OpenUrl("https://paypal.me/w4po77");
-    // Developer and sponsor links intentionally credit the original author (w4po);
-    // the project page points at the maintained ExplorerTabPlus fork (issues, releases).
-    private void OpenDeveloperPage(object _, RoutedEventArgs __) => OpenUrl("https://github.com/w4po");
-    private void OpenProjectPage(object _, RoutedEventArgs __) => OpenUrl("https://github.com/lazyalex616/ExplorerTabPlus");
+    private void OpenProjectPage(object _, RoutedEventArgs __) => OpenUrl("https://github.com/warthurton/ExplorerTabPlus");
+
+    private void OpenCreditPage(object sender, RoutedEventArgs _)
+    {
+        if (sender is FrameworkElement { Tag: string url } && !string.IsNullOrWhiteSpace(url))
+            OpenUrl(url);
+    }
 
     private void OpenSupportPage(object sender, RoutedEventArgs _)
     {

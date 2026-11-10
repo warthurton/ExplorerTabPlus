@@ -49,7 +49,7 @@
                                   Content="&#x2630;" Focusable="False" ToolTip="{Binding LanguageFields.OpenApplicationMenu,Source={x:Static language:LangeuageHelper.Instance}}" />
 
                     <!-- Window Title -->
-                    <TextBlock Grid.Column="1" Text="Explorer Tab Utility" VerticalAlignment="Center" Margin="8,0"
+                    <TextBlock x:Name="TitleText" Grid.Column="1" Text="Explorer Tab Utility" VerticalAlignment="Center" Margin="8,0"
                                Foreground="{StaticResource TextPrimaryBrush}"
                                FontWeight="SemiBold"
                                FontSize="14" />

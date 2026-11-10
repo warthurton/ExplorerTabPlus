@@ -9,7 +9,7 @@
              xmlns:models="clr-namespace:ExplorerTabUtility.Models"
              mc:Ignorable="d"
              d:DesignHeight="900" d:DesignWidth="800"
-             Loaded="AboutView_Loaded">
+            >
 
     <UserControl.Resources>
         <!-- Converters -->
@@ -467,71 +467,16 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- Left Column: Support Options -->
+                    <!-- Left Column: Maintainer -->
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="{Binding LanguageFields.SupportProject,Source={x:Static language:LangeuageHelper.Instance}}"
-                                   Style="{StaticResource SectionTitleStyle}" />
+                        <TextBlock Text="Maintainer" Style="{StaticResource SectionTitleStyle}" />
 
-                        <TextBlock Text="{Binding LanguageFields.SupportProjectText,Source={x:Static language:LangeuageHelper.Instance}}"
+                        <TextBlock Text="This is a personal fork of ExplorerTabPlus, which builds on the original Explorer Tab Utility. Bug reports and updates for this build go through this fork."
                                    TextWrapping="Wrap"
                                    Foreground="{StaticResource TextSecondaryBrush}"
-                                   Height="42"
-                                   Margin="0,0,0,6" />
+                                   Margin="0,0,0,12" />
 
-                        <Button x:Name="BtnGitHubSponsors"
-                                Style="{StaticResource SupportButtonStyle}"
-                                Click="BtnGitHubSponsors_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="💖"
-                                           Style="{StaticResource ColorfulEmojiStyle}"
-                                           Foreground="#EA4AAA" />
-                                <TextBlock Text="{Binding LanguageFields.GitHubSponsors,Source={x:Static language:LangeuageHelper.Instance}}"
-                                           FontSize="16"
-                                           VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button>
-
-                        <Button x:Name="BtnPatreon"
-                                Style="{StaticResource SupportButtonStyle}"
-                                Click="BtnPatreon_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="🏆"
-                                           Style="{StaticResource ColorfulEmojiStyle}"
-                                           Foreground="#F96854" />
-                                <TextBlock Text="{Binding LanguageFields.Patreon,Source={x:Static language:LangeuageHelper.Instance}}"
-                                           FontSize="16"
-                                           VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button>
-
-                        <Button x:Name="BtnBuyMeACoffee"
-                                Style="{StaticResource SupportButtonStyle}"
-                                Click="BtnBuyMeACoffee_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="☕"
-                                           Style="{StaticResource ColorfulEmojiStyle}"
-                                           Foreground="#FFDD00" />
-                                <TextBlock Text="{Binding LanguageFields.Coffee,Source={x:Static language:LangeuageHelper.Instance}}"
-                                           FontSize="16"
-                                           VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button>
-
-                        <Button x:Name="BtnPayPal"
-                                Style="{StaticResource SupportButtonStyle}"
-                                Click="BtnPayPal_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="💸"
-                                           Style="{StaticResource ColorfulEmojiStyle}"
-                                           Foreground="#00457C" />
-                                <TextBlock Text="{Binding LanguageFields.PayPal,Source={x:Static language:LangeuageHelper.Instance}}"
-                                           FontSize="16"
-                                           VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button>
-
-                        <Border Margin="0,24,0,0" CornerRadius="8"
-                                Style="{StaticResource ProfileCardStyle}">
+                        <Border CornerRadius="8" Style="{StaticResource ProfileCardStyle}">
                             <StackPanel>
                                 <TextBlock Text="{Binding LanguageFields.Developer,Source={x:Static language:LangeuageHelper.Instance}}"
                                            FontWeight="SemiBold"
@@ -545,43 +490,25 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!-- Developer Avatar -->
                                     <Border Margin="0,0,16,0"
                                             Style="{StaticResource SupporterAvatarStyle}"
-                                            MouseLeftButtonUp="OpenDeveloperPage">
+                                            Tag="https://github.com/warthurton"
+                                            MouseLeftButtonUp="OpenSupportPage">
                                         <Border.Background>
-                                            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/6666887?s=160" />
+                                            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/202251?s=160" />
                                         </Border.Background>
                                     </Border>
 
-                                    <!-- Developer Info -->
                                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="Abd-Alrahman Ghanem"
+                                        <TextBlock Text="Wayne Arthurton"
                                                    FontWeight="SemiBold"
                                                    FontSize="16"
-                                                   Cursor="Hand"
-                                                   MouseLeftButtonUp="OpenDeveloperPage"
-                                                   Foreground="{StaticResource TextPrimaryBrush}">
-                                            <TextBlock.Effect>
-                                                <DropShadowEffect Color="#9575CD"
-                                                                  BlurRadius="4"
-                                                                  ShadowDepth="0"
-                                                                  Opacity="0.5" />
-                                            </TextBlock.Effect>
-                                            <TextBlock.RenderTransform>
-                                                <TranslateTransform />
-                                            </TextBlock.RenderTransform>
-                                            <TextBlock.Triggers>
-                                                <EventTrigger RoutedEvent="Loaded">
-                                                    <BeginStoryboard Storyboard="{StaticResource DeveloperNameAnimation}" />
-                                                </EventTrigger>
-                                            </TextBlock.Triggers>
-                                        </TextBlock>
+                                                   Foreground="{StaticResource TextPrimaryBrush}" />
                                         <TextBlock Margin="0,4,0,0">
-                                            <TextBlock Text="github.com/w4po"
+                                            <TextBlock Text="github.com/warthurton/ExplorerTabPlus"
                                                        Cursor="Hand"
                                                        TextDecorations="Underline"
-                                                       MouseLeftButtonUp="OpenDeveloperPage"
+                                                       MouseLeftButtonUp="OpenProjectPage"
                                                        Foreground="{StaticResource AccentBrush}" />
                                         </TextBlock>
                                     </StackPanel>
@@ -590,15 +517,13 @@
                         </Border>
                     </StackPanel>
 
-                    <!-- Right Column: Supporters -->
+                    <!-- Right Column: Credits -->
                     <StackPanel Grid.Column="2">
-                        <TextBlock Text="{Binding LanguageFields.Supporters,Source={x:Static language:LangeuageHelper.Instance}}"
-                                   Style="{StaticResource SectionTitleStyle}" />
+                        <TextBlock Text="Credits" Style="{StaticResource SectionTitleStyle}" />
 
-                        <TextBlock Text="{Binding LanguageFields.SupportersText,Source={x:Static language:LangeuageHelper.Instance}}"
+                        <TextBlock Text="This fork exists thanks to the work of these people and forks. Click a name to open their repository."
                                    TextWrapping="Wrap"
                                    Foreground="{StaticResource TextSecondaryBrush}"
-                                   Height="42"
                                    Margin="0,0,0,12" />
 
                         <Border Style="{StaticResource ProfileCardStyle}"
@@ -608,78 +533,27 @@
                                           VerticalScrollBarVisibility="Auto"
                                           HorizontalScrollBarVisibility="Disabled"
                                           Style="{StaticResource CustomScrollViewerStyle}">
-                                <ItemsControl x:Name="SupportersItemsControl"
-                                              d:DataContext="{d:DesignInstance Type=models:SupporterInfo}">
-                                    <ItemsControl.Style>
-                                        <Style TargetType="ItemsControl">
-                                            <Style.Triggers>
-                                                <Trigger Property="HasItems" Value="False">
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate>
-                                                                <StackPanel HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center">
-                                                                    <TextBlock Text="🤝"
-                                                                               FontFamily="Segoe UI Emoji"
-                                                                               FontSize="32"
-                                                                               HorizontalAlignment="Center"
-                                                                               Foreground="{StaticResource PrimaryLightBrush}"
-                                                                               Margin="0,0,0,12">
-                                                                        <TextBlock.Effect>
-                                                                            <DropShadowEffect Color="{StaticResource PrimaryLightColor}"
-                                                                                              BlurRadius="15"
-                                                                                              ShadowDepth="0"
-                                                                                              Opacity="0.5" />
-                                                                        </TextBlock.Effect>
-                                                                    </TextBlock>
-                                                                    <TextBlock Text="{Binding LanguageFields.FirstSupport,Source={x:Static language:LangeuageHelper.Instance}}"
-                                                                               TextWrapping="Wrap"
-                                                                               FontSize="16"
-                                                                               FontWeight="Medium"
-                                                                               Foreground="{StaticResource TextSecondaryBrush}"
-                                                                               HorizontalAlignment="Center" />
-                                                                    <TextBlock Text="{Binding LanguageFields.SupportMeaning,Source={x:Static language:LangeuageHelper.Instance}}"
-                                                                               TextWrapping="Wrap"
-                                                                               Margin="0,8,0,0"
-                                                                               Foreground="{StaticResource TextSecondaryBrush}"
-                                                                               Opacity="0.8"
-                                                                               HorizontalAlignment="Center" />
-                                                                </StackPanel>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ItemsControl.Style>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
+                                <ItemsControl x:Name="CreditsItemsControl">
                                     <ItemsControl.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type models:SupporterInfo}">
-                                            <Border Style="{StaticResource SupporterItemStyle}">
-                                                <StackPanel>
-                                                    <Border Style="{StaticResource SupporterAvatarStyle}"
-                                                            Tag="{Binding ProfileUrl}"
-                                                            MouseLeftButtonUp="OpenSupportPage">
-                                                        <Border.Background>
-                                                            <ImageBrush
-                                                                ImageSource="{Binding ImageUrl, Converter={StaticResource Base64ImageConverter}}" />
-                                                        </Border.Background>
-                                                    </Border>
-                                                    <TextBlock Text="{Binding Name}"
-                                                               Style="{StaticResource SupporterNameStyle}" />
-                                                </StackPanel>
-                                            </Border>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,12">
+                                                <TextBlock Text="{Binding Name}"
+                                                           Tag="{Binding Url}"
+                                                           Cursor="Hand"
+                                                           FontWeight="SemiBold"
+                                                           TextDecorations="Underline"
+                                                           Foreground="{StaticResource AccentBrush}"
+                                                           MouseLeftButtonUp="OpenCreditPage" />
+                                                <TextBlock Text="{Binding Description}"
+                                                           TextWrapping="Wrap"
+                                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                            </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </ScrollViewer>
                         </Border>
-                    </StackPanel>
-                </Grid>
+                    </StackPanel>                </Grid>
             </Grid>
         </ScrollViewer>
     </Grid>

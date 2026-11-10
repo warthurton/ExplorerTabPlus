@@ -29,6 +29,11 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        var versionText = version != null ? $"v{version.Major}.{version.Minor}.{version.Build}" : string.Empty;
+        TitleText.Text = $"Explorer Tab Utility {versionText} (warthurton fork)";
+        Title = TitleText.Text;
+
         // Set initial size from settings
         Width = SettingsManager.FormSize.Width;
         Height = SettingsManager.FormSize.Height;

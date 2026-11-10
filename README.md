@@ -229,6 +229,8 @@ Navigation regression checks (from PR #142): `dotnet run --project tests/Navigat
 ## Credits
 
 - **[@w4po](https://github.com/w4po)** (Abd-Alrahman Ghanem) — original author of [Explorer Tab Utility](https://github.com/w4po/ExplorerTabUtility). All the core work is his; if you find the app useful, consider [sponsoring him](https://github.com/sponsors/w4po).
+- **[lazyalex616/ExplorerTabPlus](https://github.com/lazyalex616/ExplorerTabPlus)** — the fork this one is based on (merged community fixes, bookmarks, multi-language UI, release pipeline).
+- **[MeverikC/ExplorerTabUtility](https://github.com/MeverikC/ExplorerTabUtility)** — command-line path forwarding, reduced idle process scanning, and exclusion of the redirected window during tab reuse.
 - Community pull requests merged in this fork:
   [@taroyamadax](https://github.com/taroyamadax) (#139),
   [@youncyb](https://github.com/youncyb) (#137),
@@ -237,7 +239,7 @@ Navigation regression checks (from PR #142): `dotnet run --project tests/Navigat
   [@NeedJustWord](https://github.com/NeedJustWord) (#131, #140).
 - Libraries: [H.Hooks](https://github.com/HavenDV/H.Hooks), [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon), [AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET), [gong-wpf-dragdrop](https://github.com/punker76/gong-wpf-dragdrop).
 
-Bug reports and pull requests are welcome in [this repository's issues](https://github.com/lazyalex616/ExplorerTabPlus/issues).
+This is a personal fork maintained by [@warthurton](https://github.com/warthurton). Bug reports are welcome in [this repository's issues](https://github.com/warthurton/ExplorerTabPlus/issues).
 
 ## License
 
