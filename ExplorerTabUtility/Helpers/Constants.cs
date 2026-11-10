@@ -1,4 +1,4 @@
-﻿namespace ExplorerTabUtility.Helpers;
+namespace ExplorerTabUtility.Helpers;
 
 internal static class Constants
 {
@@ -6,7 +6,19 @@ internal static class Constants
     internal const string MutexId = $"__{AppName}Hook__Mutex";
     internal const string SettingsFileName = "settings.json";
     internal const string HotKeyProfilesFileName = "HotKeyProfiles.json";
-    internal const string UpdateUrl = "https://api.github.com/repos/lazyalex616/ExplorerTabPlus/releases/latest";
+    internal const string UpdateUrl = "https://api.github.com/repos/warthurton/ExplorerTabPlus/releases/latest";
     internal const string DefaultHotKeyProfiles = "[{\"Name\":\"Home\",\"HotKeys\":[91,69],\"Scope\":0,\"Action\":0,\"Path\":\"\",\"IsHandled\":true,\"IsEnabled\":true,\"Delay\":0},{\"Name\":\"Duplicate\",\"HotKeys\":[17,68],\"Scope\":1,\"Action\":1,\"Path\":null,\"IsHandled\":true,\"IsEnabled\":true,\"Delay\":0},{\"Name\":\"ReopenClosed\",\"HotKeys\":[16,17,84],\"Scope\":1,\"Action\":2,\"Path\":null,\"IsHandled\":true,\"IsEnabled\":true,\"Delay\":0}]";
     internal const string BookmarksFileName = "Bookmarks.json";
+
+    // Major.Minor.Build is the ExplorerTabPlus base version; the 4th number is this fork's patch level.
+    internal static string DisplayVersion
+    {
+        get
+        {
+            var v = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            if (v == null) return "v1.0.0";
+            var text = $"v{v.Major}.{v.Minor}.{v.Build}";
+            return v.Revision > 0 ? $"{text}.{v.Revision}" : text;
+        }
+    }
 }

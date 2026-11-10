@@ -10,9 +10,9 @@
 
 **让 Windows 11 新打开的资源管理器窗口自动变成标签页 —— Explorer Tab Utility 的社区维护续作。**
 
-[![最新版本](https://img.shields.io/github/v/release/lazyalex616/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)
-[![下载量](https://img.shields.io/github/downloads/lazyalex616/ExplorerTabPlus/total?color=blue)](https://github.com/lazyalex616/ExplorerTabPlus/releases)
-[![License: MIT](https://img.shields.io/github/license/lazyalex616/ExplorerTabPlus?color=yellow)](../LICENSE)
+[![最新版本](https://img.shields.io/github/v/release/warthurton/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/warthurton/ExplorerTabPlus/releases/latest)
+[![下载量](https://img.shields.io/github/downloads/warthurton/ExplorerTabPlus/total?color=blue)](https://github.com/warthurton/ExplorerTabPlus/releases)
+[![License: MIT](https://img.shields.io/github/license/warthurton/ExplorerTabPlus?color=yellow)](../LICENSE)
 [![Windows 11 22H2+](https://img.shields.io/badge/Windows%2011-22H2%2B-0078D4?logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows-11)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)
 [![.NET Framework 4.8.1](https://img.shields.io/badge/.NET%20Framework-4.8.1-512BD4)](https://dotnet.microsoft.com/download/dotnet-framework/net481)
@@ -140,7 +140,7 @@ ExplorerTabPlus 把它们合到一起，用 CI 保证能正常编译，并发布
 
 ## 安装
 
-从[最新发布页](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)下载。
+从[最新发布页](https://github.com/warthurton/ExplorerTabPlus/releases/latest)下载。
 
 **安装程序（推荐）：** `ExplorerTabUtility_<版本>_Setup.exe` 会根据你的 CPU 自动选择合适的版本。如果没装 .NET 9 桌面运行时，会询问是否安装，也可以改用 .NET Framework 4.8.1 版本。
 
@@ -207,7 +207,7 @@ ExplorerTabPlus 把它们合到一起，用 CI 保证能正常编译，并发布
 需要：Windows、装有 .NET 桌面开发工作负载的 Visual Studio 2022（或 Build Tools），以及 .NET 9 SDK。项目引用了 COM 组件（`Shell32`、`SHDocVw`），必须用完整版 **MSBuild** 编译，只用 `dotnet build` 会报 `MSB4803`。
 
 ```powershell
-git clone https://github.com/lazyalex616/ExplorerTabPlus.git
+git clone https://github.com/warthurton/ExplorerTabPlus.git
 cd ExplorerTabPlus
 msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=Release /p:TargetFramework=net9.0-windows
 # 或 /p:TargetFramework=net481
@@ -226,7 +226,7 @@ msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=R
   [@NeedJustWord](https://github.com/NeedJustWord)（#131、#140）。
 - 使用的开源库：[H.Hooks](https://github.com/HavenDV/H.Hooks)、[Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon)、[AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET)、[gong-wpf-dragdrop](https://github.com/punker76/gong-wpf-dragdrop)。
 
-问题反馈和 PR 请提交到[本仓库的 Issues](https://github.com/lazyalex616/ExplorerTabPlus/issues)。
+问题反馈和 PR 请提交到[本仓库的 Issues](https://github.com/warthurton/ExplorerTabPlus/issues)。
 
 ## 许可证
 

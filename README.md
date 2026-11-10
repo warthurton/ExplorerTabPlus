@@ -10,9 +10,9 @@
 
 **Force new File Explorer windows to open as tabs on Windows 11 — a community-maintained continuation of Explorer Tab Utility.**
 
-[![Latest release](https://img.shields.io/github/v/release/lazyalex616/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/lazyalex616/ExplorerTabPlus/total?color=blue)](https://github.com/lazyalex616/ExplorerTabPlus/releases)
-[![License: MIT](https://img.shields.io/github/license/lazyalex616/ExplorerTabPlus?color=yellow)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/warthurton/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/warthurton/ExplorerTabPlus/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/warthurton/ExplorerTabPlus/total?color=blue)](https://github.com/warthurton/ExplorerTabPlus/releases)
+[![License: MIT](https://img.shields.io/github/license/warthurton/ExplorerTabPlus?color=yellow)](LICENSE)
 [![Windows 11 22H2+](https://img.shields.io/badge/Windows%2011-22H2%2B-0078D4?logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows-11)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)
 [![.NET Framework 4.8.1](https://img.shields.io/badge/.NET%20Framework-4.8.1-512BD4)](https://dotnet.microsoft.com/download/dotnet-framework/net481)
@@ -140,7 +140,7 @@ Fork maintenance: the in-app updater checks this repository's releases, CI build
 
 ## Installation
 
-Download from the [latest release](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest).
+Download from the [latest release](https://github.com/warthurton/ExplorerTabPlus/releases/latest).
 
 **Installer (recommended):** `ExplorerTabUtility_<version>_Setup.exe` picks the right build for your CPU. If the .NET 9 Desktop Runtime is missing it offers to install it, or falls back to the .NET Framework 4.8.1 build.
 
@@ -218,7 +218,7 @@ Default profiles: <kbd>Win</kbd>+<kbd>E</kbd> opens Home, <kbd>Ctrl</kbd>+<kbd>D
 Requirements: Windows, Visual Studio 2022 (or Build Tools) with the .NET desktop workload, and the .NET 9 SDK. The project uses COM references (`Shell32`, `SHDocVw`), so it must be built with full-framework **MSBuild**; `dotnet build` alone fails with `MSB4803`.
 
 ```powershell
-git clone https://github.com/lazyalex616/ExplorerTabPlus.git
+git clone https://github.com/warthurton/ExplorerTabPlus.git
 cd ExplorerTabPlus
 msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=Release /p:TargetFramework=net9.0-windows
 # or /p:TargetFramework=net481

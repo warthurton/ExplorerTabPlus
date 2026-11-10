@@ -10,9 +10,9 @@
 
 **Windows 11 で新しく開いたエクスプローラーのウィンドウを自動でタブにまとめる —— Explorer Tab Utility のコミュニティ版。**
 
-[![最新リリース](https://img.shields.io/github/v/release/lazyalex616/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)
-[![ダウンロード数](https://img.shields.io/github/downloads/lazyalex616/ExplorerTabPlus/total?color=blue)](https://github.com/lazyalex616/ExplorerTabPlus/releases)
-[![License: MIT](https://img.shields.io/github/license/lazyalex616/ExplorerTabPlus?color=yellow)](../LICENSE)
+[![最新リリース](https://img.shields.io/github/v/release/warthurton/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/warthurton/ExplorerTabPlus/releases/latest)
+[![ダウンロード数](https://img.shields.io/github/downloads/warthurton/ExplorerTabPlus/total?color=blue)](https://github.com/warthurton/ExplorerTabPlus/releases)
+[![License: MIT](https://img.shields.io/github/license/warthurton/ExplorerTabPlus?color=yellow)](../LICENSE)
 [![Windows 11 22H2+](https://img.shields.io/badge/Windows%2011-22H2%2B-0078D4?logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows-11)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)
 [![.NET Framework 4.8.1](https://img.shields.io/badge/.NET%20Framework-4.8.1-512BD4)](https://dotnet.microsoft.com/download/dotnet-framework/net481)
@@ -140,7 +140,7 @@ ExplorerTabPlus はそれらをひとつにまとめ、CI でビルドを確認�
 
 ## インストール
 
-[最新リリース](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)からダウンロードしてください。
+[最新リリース](https://github.com/warthurton/ExplorerTabPlus/releases/latest)からダウンロードしてください。
 
 **インストーラー（おすすめ）：** `ExplorerTabUtility_<バージョン>_Setup.exe` が CPU に合ったビルドを自動で選びます。.NET 9 デスクトップ ランタイムが入っていない場合は、インストールするか .NET Framework 4.8.1 版を使うかを選べます。
 
@@ -207,7 +207,7 @@ ExplorerTabPlus はそれらをひとつにまとめ、CI でビルドを確認�
 必要なもの：Windows、「.NET デスクトップ開発」ワークロードを含む Visual Studio 2022（または Build Tools）、.NET 9 SDK。COM 参照（`Shell32`、`SHDocVw`）を使っているため、フル版の **MSBuild** でビルドする必要があります。`dotnet build` だけでは `MSB4803` エラーになります。
 
 ```powershell
-git clone https://github.com/lazyalex616/ExplorerTabPlus.git
+git clone https://github.com/warthurton/ExplorerTabPlus.git
 cd ExplorerTabPlus
 msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=Release /p:TargetFramework=net9.0-windows
 # または /p:TargetFramework=net481
@@ -226,7 +226,7 @@ msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=R
   [@NeedJustWord](https://github.com/NeedJustWord)（#131、#140）
 - 使用ライブラリ：[H.Hooks](https://github.com/HavenDV/H.Hooks)、[Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon)、[AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET)、[gong-wpf-dragdrop](https://github.com/punker76/gong-wpf-dragdrop)
 
-不具合報告やプルリクエストは[このリポジトリの Issues](https://github.com/lazyalex616/ExplorerTabPlus/issues) へどうぞ。
+不具合報告やプルリクエストは[このリポジトリの Issues](https://github.com/warthurton/ExplorerTabPlus/issues) へどうぞ。
 
 ## ライセンス
 

@@ -11,14 +11,7 @@ namespace ExplorerTabUtility.UI.Views;
 // ReSharper disable once RedundantExtendsListEntry
 public partial class AboutView : UserControl
 {
-    public string Version
-    {
-        get
-        {
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            return version != null ? $"v{version.Major}.{version.Minor}.{version.Build}" : "v1.0.0";
-        }
-    }
+    public string Version => Helpers.Constants.DisplayVersion;
 
     private sealed class CreditInfo(string name, string description, string url)
     {

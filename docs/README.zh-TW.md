@@ -10,9 +10,9 @@
 
 **讓 Windows 11 新開啟的檔案總管視窗自動變成索引標籤 —— Explorer Tab Utility 的社群維護延續版。**
 
-[![最新版本](https://img.shields.io/github/v/release/lazyalex616/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)
-[![下載次數](https://img.shields.io/github/downloads/lazyalex616/ExplorerTabPlus/total?color=blue)](https://github.com/lazyalex616/ExplorerTabPlus/releases)
-[![License: MIT](https://img.shields.io/github/license/lazyalex616/ExplorerTabPlus?color=yellow)](../LICENSE)
+[![最新版本](https://img.shields.io/github/v/release/warthurton/ExplorerTabPlus?label=release&color=2ea44f)](https://github.com/warthurton/ExplorerTabPlus/releases/latest)
+[![下載次數](https://img.shields.io/github/downloads/warthurton/ExplorerTabPlus/total?color=blue)](https://github.com/warthurton/ExplorerTabPlus/releases)
+[![License: MIT](https://img.shields.io/github/license/warthurton/ExplorerTabPlus?color=yellow)](../LICENSE)
 [![Windows 11 22H2+](https://img.shields.io/badge/Windows%2011-22H2%2B-0078D4?logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows-11)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)
 [![.NET Framework 4.8.1](https://img.shields.io/badge/.NET%20Framework-4.8.1-512BD4)](https://dotnet.microsoft.com/download/dotnet-framework/net481)
@@ -140,7 +140,7 @@ ExplorerTabPlus 把它們整合在一起，以 CI 確保能正常編譯，並發
 
 ## 安裝
 
-從[最新發行版本](https://github.com/lazyalex616/ExplorerTabPlus/releases/latest)下載。
+從[最新發行版本](https://github.com/warthurton/ExplorerTabPlus/releases/latest)下載。
 
 **安裝程式（建議）：** `ExplorerTabUtility_<版本>_Setup.exe` 會依你的 CPU 自動選擇合適的版本。若未安裝 .NET 9 桌面執行階段，會詢問是否安裝，也可以改用 .NET Framework 4.8.1 版本。
 
@@ -207,7 +207,7 @@ ExplorerTabPlus 把它們整合在一起，以 CI 確保能正常編譯，並發
 需求：Windows、已安裝「.NET 桌面開發」工作負載的 Visual Studio 2022（或 Build Tools），以及 .NET 9 SDK。專案參考了 COM 元件（`Shell32`、`SHDocVw`），必須使用完整版 **MSBuild** 編譯；只用 `dotnet build` 會出現 `MSB4803` 錯誤。
 
 ```powershell
-git clone https://github.com/lazyalex616/ExplorerTabPlus.git
+git clone https://github.com/warthurton/ExplorerTabPlus.git
 cd ExplorerTabPlus
 msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=Release /p:TargetFramework=net9.0-windows
 # 或 /p:TargetFramework=net481
@@ -226,7 +226,7 @@ msbuild ExplorerTabUtility/ExplorerTabUtility.csproj /restore /p:Configuration=R
   [@NeedJustWord](https://github.com/NeedJustWord)（#131、#140）。
 - 使用的開源函式庫：[H.Hooks](https://github.com/HavenDV/H.Hooks)、[Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon)、[AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET)、[gong-wpf-dragdrop](https://github.com/punker76/gong-wpf-dragdrop)。
 
-問題回報與 PR 請提交到[本儲存庫的 Issues](https://github.com/lazyalex616/ExplorerTabPlus/issues)。
+問題回報與 PR 請提交到[本儲存庫的 Issues](https://github.com/warthurton/ExplorerTabPlus/issues)。
 
 ## 授權
 
