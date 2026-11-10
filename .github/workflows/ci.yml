@@ -1,14 +1,14 @@
 name: CI
 
-# Compile-only check for every push and pull request to main (no release, no signing).
+# Compile-only check for every push and pull request to warthurton (no release, no signing).
 # Also runs the navigation lifecycle regression checks added by upstream PR #142
 # (previously in navigation-regression.yml, folded in here).
 
 on:
   push:
-    branches: [ main ]
+    branches: [ warthurton ]
   pull_request:
-    branches: [ main ]
+    branches: [ warthurton ]
   workflow_dispatch:
 
 permissions:
