@@ -3,6 +3,7 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>net9.0-windows;net481</TargetFrameworks>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <Nullable>enable</Nullable>
         <UseWPF>True</UseWPF>
         <ApplicationIcon>Icon.ico</ApplicationIcon>
