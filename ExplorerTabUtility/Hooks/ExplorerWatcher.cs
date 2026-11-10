@@ -24,7 +24,6 @@ using WindowEntry = DualKeyEntry<InternetExplorer, nint?, WindowInfo>;
 
 public class ExplorerWatcher : IHook
 {
-    private const int RecentlyCreatedWindowGracePeriodMs = 2_000;
     private static bool _instanceRunning;
     private static Guid _shellBrowserGuid = typeof(IShellBrowser).GUID;
     private int _disposed;
@@ -111,7 +110,7 @@ public class ExplorerWatcher : IHook
         await OpenTabNavigateWithSelection(windowToOpen, windowHandle, duplicate, true);
     }
     
-    public nint SearchForTab(string targetPath)
+    public nint SearchForTab(string targetPath, nint excludedWindowHandle = 0)
     {
         nint targetPidl = 0;
         try
@@ -124,13 +123,10 @@ public class ExplorerWatcher : IHook
                 if (!tabHandle.HasValue || tabHandle.Value == 0)
                     continue;
 
-                // A new standalone window is the request currently being
-                // redirected, so do not select it as the existing match.
-                // A tab created inside an existing multi-tab host is already
-                // a valid reuse candidate and must remain visible to avoid
-                // duplicate tabs during rapid consecutive opens.
-                if (!Helper.IsTimeUp(windowInfo.CreatedAt, RecentlyCreatedWindowGracePeriodMs) &&
-                    IsRecentlyCreatedStandaloneWindow(tabHandle.Value))
+                // The window being converted is already registered with
+                // ShellWindows. Exclude only that source window so a recently
+                // created tab in an existing host can still be reused.
+                if (excludedWindowHandle != 0 && window.HWND == excludedWindowHandle)
                     continue;
 
                 var comparePath = windowInfo.Location ?? GetLocation(window);
@@ -152,11 +148,6 @@ public class ExplorerWatcher : IHook
         }
     }
 
-    private static bool IsRecentlyCreatedStandaloneWindow(nint tabHandle)
-    {
-        var parentWindow = WinApi.GetParent(tabHandle);
-        return parentWindow == 0 || Helper.GetAllExplorerTabs(parentWindow).Take(2).Count() <= 1;
-    }
     public async Task SelectTabByHandle(nint windowHandle, nint tabHandle)
     {
         var tabs = Helper.GetAllExplorerTabs(windowHandle).ToArray();
@@ -473,7 +464,7 @@ public class ExplorerWatcher : IHook
                 // Keep the source alive until selection has had time to arrive.
                 var selection = await CaptureInitialSelectionAsync(window);
                 var converted = await OpenTabNavigateWithSelection(
-                    new WindowRecord(location, hWnd, selection), mainWindow);
+                    new WindowRecord(location, hWnd, selection), mainWindow, excludedWindowHandle: hWnd);
 
                 if (converted)
                 {
@@ -691,7 +682,7 @@ public class ExplorerWatcher : IHook
                 _toOpenWindowsLock.Release();
         }
     }
-    private async Task<bool> OpenTabNavigateWithSelection(WindowRecord windowToOpen, nint windowHandle = 0, bool isDuplicate = false, bool forceTabReuse = false, bool inCurrentTab = false)
+    private async Task<bool> OpenTabNavigateWithSelection(WindowRecord windowToOpen, nint windowHandle = 0, bool isDuplicate = false,     bool forceTabReuse = false, bool inCurrentTab = false, nint excludedWindowHandle = 0)
     {
         await _toOpenWindowsLock.WaitAsync();
         try
@@ -700,7 +691,7 @@ public class ExplorerWatcher : IHook
 
             if ((_reuseTabs || forceTabReuse) && !isDuplicate)
             {
-                var existingTab = SearchForTab(windowToOpen.Location);
+                var existingTab = SearchForTab(windowToOpen.Location, excludedWindowHandle);
                 if (existingTab != 0 && WinApi.IsWindow(existingTab))
                 {
                     windowHandle = WinApi.GetParent(existingTab);
