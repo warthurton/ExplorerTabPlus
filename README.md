@@ -42,7 +42,20 @@ Every change below is an open pull request from the upstream repository, merged 
 | [#131](https://github.com/w4po/ExplorerTabUtility/pull/131) | Multi-language UI (English, Simplified Chinese) | [@NeedJustWord](https://github.com/NeedJustWord) |
 | [#140](https://github.com/w4po/ExplorerTabUtility/pull/140) | Bookmark management: save, navigate, organize, import/export bookmarks, open them in the current tab, a new tab or a new window | [@NeedJustWord](https://github.com/NeedJustWord) |
 
-Fork maintenance: the in-app updater checks this repository's releases, CI builds every change for both target frameworks, and releases are built without the upstream signing service.
+### Layers of this fork
+
+This repository is built in layers; each one is listed with where it came from.
+
+| Source | What it contributed |
+|---|---|
+| [w4po/ExplorerTabUtility](https://github.com/w4po/ExplorerTabUtility) v2.5.0 | The original app (all core functionality) |
+| [lazyalex616/ExplorerTabPlus](https://github.com/lazyalex616/ExplorerTabPlus) v2.6.0 | The six upstream PRs above, bookmarks, multi-language UI, unsigned release pipeline and CI, updater/installer repointed to the fork |
+| [MeverikC/ExplorerTabUtility](https://github.com/MeverikC/ExplorerTabUtility) | Command-line path forwarding to the running instance; reduced idle process scanning; tab reuse excludes only the window being converted (fixes duplicate tabs on rapid opens) |
+| This fork ([warthurton](https://github.com/warthurton)) v2.6.0.1 | `Major.Minor.Build.Patch` versioning; title bar shows version and fork; About page with maintainer and credits (sponsor links removed); updater, project and installer URLs point here; CI targets the `warthurton` branch and restores dependencies on non-Windows hosts |
+
+See [`.github/release-notes`](.github/release-notes) for per-release details.
+
+> **Maintainers and AI agents:** when you merge work from another fork or PR, or add a feature, update the tables above, the *Features* section, *Credits*, `.github/release-notes/` and the translated READMEs in `docs/`. See [AGENTS.md](AGENTS.md).
 
 ## Features
 
@@ -70,6 +83,12 @@ Fork maintenance: the in-app updater checks this repository's releases, CI build
 
 - Choose the UI language in the main window; English and Simplified Chinese are included
 - Language files live in the `Languages` folder next to the executable
+</details>
+
+<details>
+<summary><b>Command-line opening</b> (new, from MeverikC)</summary>
+
+- `ExplorerTabUtility.exe "C:\path"` forwards locations to the running instance, which opens each as a tab (see [Command-line opening](#command-line-opening))
 </details>
 
 <details>
