@@ -4,6 +4,10 @@
 
 <br>
 
+> [!NOTE]
+> この翻訳は、メンテナーが翻訳の正確性を確実に検証できないため、更新されていません。このフォークの変更内容と出典（Layers of this fork）は[英語版 README](../README.md)をご覧ください。
+> This translation is not updated because the maintainer cannot reliably validate it; the [English README](../README.md) is the source of truth.
+
 <img src="../Assets/ExplorerTabUtilityLogo.gif" alt="ExplorerTabPlus logo" width="420">
 
 # ExplorerTabPlus

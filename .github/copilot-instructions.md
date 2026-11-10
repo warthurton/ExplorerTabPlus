@@ -1,0 +1,1 @@
+Follow `AGENTS.md`. In particular, any change that adds, merges or alters a feature or fix must also update `README.md` (what changed and its source), `.github/release-notes/`, (the translated READMEs in `docs/` are intentionally not synced; they point to the English one).
