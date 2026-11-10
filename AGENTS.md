@@ -11,7 +11,7 @@
    - "Credits" for every new source repository or contributor.
    - Hotkey actions table / Usage / Build sections if they are affected.
 2. `.github/release-notes/v<version>.md` — add the entry (with "from <source>" attribution) under Added / Fixed / Changed.
-3. Translated READMEs (`docs/README.zh-CN.md`, `docs/README.zh-TW.md`, `docs/README.ja.md`) — mirror substantive changes.
+3. Translated READMEs (`docs/README.zh-CN.md`, `docs/README.zh-TW.md`, `docs/README.ja.md`) — the maintainer doesn't read these languages, so they are not kept in sync. Leave the "not up to date, see English README" note at the top of each in place and don't mirror changes.
 
 Always attribute the origin (repository, PR number, author) of merged work, and preserve original authors' commits when merging.
 

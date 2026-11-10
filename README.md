@@ -55,7 +55,7 @@ This repository is built in layers; each one is listed with where it came from.
 
 See [`.github/release-notes`](.github/release-notes) for per-release details.
 
-> **Maintainers and AI agents:** when you merge work from another fork or PR, or add a feature, update the tables above, the *Features* section, *Credits*, `.github/release-notes/` and the translated READMEs in `docs/`. See [AGENTS.md](AGENTS.md).
+> **Maintainers and AI agents:** when you merge work from another fork or PR, or add a feature, update the tables above, the *Features* section, *Credits*, and `.github/release-notes/` (the translated READMEs in `docs/` are not kept in sync and point here). See [AGENTS.md](AGENTS.md).
 
 ## Features
 

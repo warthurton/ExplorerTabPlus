@@ -4,6 +4,10 @@
 
 <br>
 
+> [!NOTE]
+> 本翻译未同步更新。有关此分支的最新改动及其来源（Layers of this fork），请参阅[英文 README](../README.md)。
+> This translation is not kept up to date; the [English README](../README.md) is the source of truth.
+
 <img src="../Assets/ExplorerTabUtilityLogo.gif" alt="ExplorerTabPlus logo" width="420">
 
 # ExplorerTabPlus
