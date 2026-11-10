@@ -5,8 +5,8 @@
 <br>
 
 > [!NOTE]
-> 本翻譯未同步更新。有關此分支的最新變更及其來源（Layers of this fork），請參閱[英文 README](../README.md)。
-> This translation is not kept up to date; the [English README](../README.md) is the source of truth.
+> 本翻譯未同步更新，因為維護者無法可靠地驗證譯文的準確性。有關此分支的最新變更及其來源（Layers of this fork），請參閱[英文 README](../README.md)。
+> This translation is not updated because the maintainer cannot reliably validate it; the [English README](../README.md) is the source of truth.
 
 <img src="../Assets/ExplorerTabUtilityLogo.gif" alt="ExplorerTabPlus logo" width="420">
 
